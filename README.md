@@ -88,43 +88,92 @@ We explore several centrality measures:
 
 *Figure 5: Centrality measures for the Southern Women dataset.*
 
-## Clustering
 
-We compare various clustering algorithms, including Louvain, Girvan-Newman, Label Propagation, and spectral clustering methods.
+## Clustering Results
 
-| Algorithm | Category | Time Complexity | Requires k |
-|-----------|----------|-----------------|------------|
-| Louvain [2] | Graph-based | $O(N \cdot \log{N})$ | No |
-| Girvan-Newman (GN) [3] | Edge betweenness | $O(|V|\cdot|E|^2)$ | No |
-| Label Propagation (LP) [4] | Graph-based | $O(\cdot|E|)$ | No |
-| Leading Eigenvector (LE) [5] | Graph-based | $O((|V|+|U|)^2 + |E|)$ | No |
-| Spectral Clustering (SC) [6] | Graph-based | $O(k \cdot |V|^2)$ | Yes |
-| K-means (KM) [7] | Traditional | $O(k \cdot |U| \cdot |V| )$ | Yes |
-| K-medoids (KM+) [8] | Traditional | $O(k \cdot |U|^2 \cdot |V|)$ | Yes |
-| BGC [9] | Specialized | $O((|E| + |U| \cdot k )\cdot \beta)$ | Yes |
-| FNEM [9] | Specialized | $O(|E|\cdot \beta + |U|\cdot\beta^2 + |U|\cdot k^2 )$ | Yes |
-| SNEM [9] | Specialized | $O(|E|\cdot \beta +|U|\cdot\beta^2 + |U|\cdot k)$ | Yes |
+### Comparison of Clustering Methods
 
-*Table 1: Overview of clustering algorithms. Note: $\beta$ is the dimensionality of low-rank approximation [9], and $N =|U \cup V|$.*
+Table 1 compares different methods for finding the number of clusters in the Southern Women dataset.
+
+| Network | Nodes | Links | Non-backtracking | Louvain | Newman | Modularity eigengap | Density Est |
+|---------|-------|-------|-------------------|---------|---------|---------------------|-------------|
+| Davis Southern Women | 32 | 89 | 2 | 4 | 2 | 31 | 2.830000 |
+| Davis Southern Women (Row Projection) | 18 | 139 | 1 | 2 | 2 | 1 | 1.100000 |
+
+
+### Comparison of Clustering Algorithms
+
+### Clustering Results for k=2
+
+Table 2 shows the clustering results for k=2 clusters, comparing the true grouping with various algorithms.
+
+| Name | True | Louvain | GN | LP | KM | KM+ | BGC | FNEM | SNEM | LE | SC |
+|------|------|---------|----|----|----|----|-----|------|------|----|----|
+| Evelyn Jefferson | 0 | 1 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 1 |
+| Laura Mandeville | 0 | 1 | 0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 | 1 |
+| Theresa Anderson | 0 | 1 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 1 |
+| Brenda Rogers | 0 | 1 | 0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 | 1 |
+| Charlotte McDowd | 0 | 1 | 0 | 0 | 1 | 1 | 1 | 0 | 0 | 0 | 1 |
+| Frances Anderson | 0 | 1 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 1 |
+| Eleanor Nye | 0 | 2 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 1 |
+| Pearl Oglethorpe | 0 | 2 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 1 |
+| Ruth DeSand | 0 | 2 | 0 | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 1 |
+| Verne Sanderson | 1 | 2 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+| Myra Liddel | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+| Katherina Rogers | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+| Sylvia Avondale | 1 | 0 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 0 |
+| Nora Fayette | 1 | 0 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 0 |
+| Helen Lloyd | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+| Dorothy Murchison | 1 | 2 | 2 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+| Olivia Carleton | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+| Flora Price | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+
+### Clustering Results for k=3
+
+Table 3 shows the clustering results for k=3 clusters, comparing the true grouping with various algorithms.
+
+| Name | True | Louvain | GN | LP | KM | KM+ | BGC | FNEM | SNEM | LE | SC |
+|------|------|---------|----|----|----|----|-----|------|------|----|----|
+| Evelyn Jefferson | 0 | 2 | 0 | 0 | 2 | 2 | 2 | 1 | 2 | 0 | 0 |
+| Laura Mandeville | 0 | 2 | 0 | 0 | 2 | 2 | 2 | 1 | 2 | 0 | 0 |
+| Theresa Anderson | 0 | 2 | 0 | 0 | 2 | 2 | 2 | 1 | 2 | 0 | 0 |
+| Brenda Rogers | 0 | 2 | 0 | 0 | 2 | 2 | 2 | 1 | 2 | 0 | 0 |
+| Charlotte McDowd | 0 | 2 | 0 | 0 | 2 | 2 | 2 | 1 | 2 | 0 | 0 |
+| Frances Anderson | 0 | 2 | 0 | 0 | 2 | 2 | 2 | 1 | 2 | 0 | 0 |
+| Eleanor Nye | 0 | 0 | 0 | 0 | 2 | 2 | 2 | 1 | 2 | 0 | 0 |
+| Pearl Oglethorpe | 0 | 1 | 0 | 0 | 2 | 0 | 1 | 1 | 2 | 0 | 0 |
+| Ruth DeSand | 0 | 0 | 0 | 0 | 1 | 0 | 2 | 1 | 2 | 1 | 0 |
+| Verne Sanderson | 1 | 3 | 1 | 0 | 0 | 1 | 1 | 1 | 2 | 1 | 1 |
+| Myra Liddel | 1 | 3 | 2 | 0 | 0 | 0 | 1 | 1 | 2 | 1 | 1 |
+| Katherina Rogers | 1 | 3 | 2 | 0 | 0 | 1 | 1 | 1 | 2 | 1 | 1 |
+| Sylvia Avondale | 1 | 3 | 2 | 0 | 0 | 1 | 1 | 1 | 2 | 1 | 1 |
+| Nora Fayette | 1 | 3 | 2 | 0 | 0 | 1 | 1 | 1 | 2 | 1 | 1 |
+| Helen Lloyd | 1 | 3 | 2 | 0 | 0 | 1 | 1 | 1 | 2 | 1 | 1 |
+| Dorothy Murchison | 1 | 1 | 3 | 0 | 0 | 2 | 1 | 1 | 2 | 1 | 2 |
+| Olivia Carleton | 1 | 1 | 2 | 1 | 0 | 0 | 1 | 1 | 2 | 1 | 2 |
+| Flora Price | 1 | 1 | 2 | 1 | 0 | 0 | 1 | 1 | 2 | 1 | 2 |
+
+These tables provide a comprehensive view of the clustering results and algorithm comparisons for the Southern Women dataset.
 
 ## Results and Evaluation
 
 We evaluate clustering results using metrics such as Accuracy (Acc), F1 score (F1), Normalized Mutual Information (NMI), and Adjusted Rand Index (ARI).
 
-| Method | Acc (k=2) | F1 (k=2) | NMI (k=2) | ARI (k=2) | Time (ms) |
-|--------|-----------|----------|-----------|-----------|-----------|
-| Louvain | 0.67 | 0.80 | 0.57 | 0.45 | 11.20 |
-| Girvan Newman | 0.89 | 0.91 | 0.66 | 0.68 | 91.58 |
-| Label Propagation | 0.61 | 0.54 | 0.16 | 0.03 | 1.43 |
-| K-means | 1.00 | 1.00 | 1.00 | 1.00 | 3,344.13 |
-| K-medoids | 0.78 | 0.77 | 0.39 | 0.27 | 1,007.48 |
-| BGC | 0.50 | 0.33 | 0.00 | 0.00 | 6.76 |
-| FNEM | 0.50 | 0.33 | 0.00 | 0.00 | 52.33 |
-| SNEM | 0.50 | 0.33 | 0.00 | 0.00 | 39.69 |
-| LE | 0.50 | 0.33 | 0.00 | 0.00 | 10.41 |
-| SC | 1.00 | 1.00 | 1.00 | 1.00 | 4.46 |
 
-*Table 2: Evaluation metrics for clustering methods (k=2)*
+| Algorithm | Acc (k=2/3) | F1 (k=2/3) | NMI (k=2/3) | ARI (k=2/3) | Time ms (k=2/3) |
+|-----------|-------------|------------|-------------|-------------|-----------------|
+| Louvain | 0.67 / 0.67 | 0.80 / 0.80 | 0.57 / 0.57 | 0.45 / 0.45 | 11.20 / 2.55 |
+| Girvan Newman | 0.89 / 0.89 | 0.91 / 0.94 | 0.66 / 0.80 | 0.68 / 0.80 | 91.58 / 62.69 |
+| Label Propagation | 0.61 / 0.61 | 0.54 / 0.54 | 0.16 / 0.16 | 0.03 / 0.03 | 1.43 / 1.33 |
+| K-means | 1.00 / 0.67 | 1.00 / 0.79 | 1.00 / 0.54 | 1.00 / 0.44 | 3,344.13 / 1,059.05 |
+| K-medoids | 0.78 / 0.67 | 0.77 / 0.73 | 0.39 / 0.44 | 0.27 / 0.28 | 1,007.48 / 979.38 |
+| BGC | 0.50 / 0.94 | 0.33 / 0.94 | 0.00 / 0.74 | 0.00 / 0.78 | 6.76 / 7.02 |
+| FNEM | 0.50 / 0.50 | 0.33 / 0.33 | 0.00 / 0.00 | 0.00 / 0.00 | 52.33 / 50.29 |
+| SNEM | 0.50 / 0.50 | 0.33 / 0.33 | 0.00 / 0.00 | 0.00 / 0.00 | 39.69 / 42.68 |
+| LE | 0.50 / 0.83 | 0.33 / 0.83 | 0.00 / 0.48 | 0.00 / 0.41 | 10.41 / 13.97 |
+| SC | 1.00 / 0.83 | 1.00 / 0.90 | 1.00 / 0.81 | 1.00 / 0.76 | 4.46 / 3.91 |
+
+
 
 ## Conclusion
 
