@@ -93,16 +93,16 @@ We explore several centrality measures:
 
 | Algorithm | Category | Time Complexity | Requires k |
 |-----------|----------|-----------------|------------|
-| Louvain [2] | Graph-based | O(N · log N) | No |
-| Girvan-Newman (GN) [3] | Edge betweenness | O(|V| · |E|^2) | No |
-| Label Propagation (LP) [4] | Graph-based | O(·|E|) | No |
-| Leading Eigenvector (LE) [5] | Graph-based | O((|V| + |U|)^2 + |E|) | No |
-| Spectral Clustering (SC) [6] | Graph-based | O(k · |V|^2) | Yes |
-| K-means (KM) [7] | Traditional | O(k · |U| · |V|) | Yes |
-| K-medoids (KM+) [8] | Traditional | O(k · |U|^2 · |V|) | Yes |
-| BGC [9] | Specialized | O((|E| + |U| · k) · β) | Yes |
-| FNEM [9] | Specialized | O(|E| · β + |U| · β^2 + |U| · k^2) | Yes |
-| SNEM [9] | Specialized | O(|E| · β + |U| · β^2 + |U| · k) | Yes |
+| Louvain [2] | Graph-based |$ O(N · log N)$ | No |
+| Girvan-Newman (GN) [3] | Edge betweenness |$ O(|V| · |E|^2)$ | No |
+| Label Propagation (LP) [4] | Graph-based |$ O(·|E|)$ | No |
+| Leading Eigenvector (LE) [5] | Graph-based |$ O((|V| + |U|)^2 + |E|)$ | No |
+| Spectral Clustering (SC) [6] | Graph-based |$ O(k · |V|^2)$ | Yes |
+| K-means (KM) [7] | Traditional |$ O(k · |U| · |V|)$ | Yes |
+| K-medoids (KM+) [8] | Traditional |$ O(k · |U|^2 · |V|)$ | Yes |
+| BGC [9] | Specialized |$ O((|E| + |U| · k) · β)$ | Yes |
+| FNEM [9] | Specialized |$ O(|E| · β + |U| · β^2 + |U| · k^2)$ | Yes |
+| SNEM [9] | Specialized |$ O(|E| · β + |U| · β^2 + |U| · k)$ | Yes |
 
 Table 2: Overview of Clustering Algorithms for Bipartite Graphs. Note, β is the dimensionality of low-rank approximation [?], and N = |U ∪ V|.
 
